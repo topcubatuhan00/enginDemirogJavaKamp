@@ -1,0 +1,39 @@
+ABSTRACT ==> bu klasörde abstract sınıflar interface'ler bulunuyor.
+
+
+	BaseCustomerManager => 	Bu bir abstract sınıftır. CustomerService'den implement edilir. CustomerManager'ların
+					babasıdır.
+
+	ICustomerCheckServ. =>	Müşterinin check edilmesi gereken sınıflar için referansları tutan interface'dir.
+
+	ICustomerService    =>	Müşteriyle alakalı manager sınıflar için müşterilerde olması zorunlu olan referansların
+					tutulduğu interface.
+	
+	IEntity 		  =>	Entity sınıfların ileride sorun yaratmaması için bir interface.
+	
+
+ADAPTERS ==> bu klasörde mernis doğrulamasını yapan classlar bulunuyor.
+
+
+	MernisServAdapter   =>	ICustomerCheckService'den implement edilir. Mernis yardımı ile kontrölü yapan bir
+					boolean fonksiyonu bulunur sadece.
+
+
+CONCRETE ==> bu klasör iş sınıflarının bulunduğu klasördür.
+
+
+	CustomerCheManager  =>	Bu mernis dogrulaması calismadigi zamanlarda ya da test etmek için kullanacğımız bir
+					sınftır. ICustomerCheckServ'den implement edilir. Bu nedenle içinde bir 
+					CheckIfRealPerson fonksiyonu bulunur ve true döndürülür.
+	
+	NeroCustomerManager =>	BaseCustomerManager'dan extend edilir. Newlenirken herhangi bir checkService istemez
+					direkt olarak kaydeder. Babasının save methodunu direkt kullanır.
+	
+	StarCustomerManager => 	BaseCustomerManager'dan extend edilir. Newlenirken checkService ister. Ya bizim 
+					yazdığımızı yollarız ya da adapters içindekini. Babasının save fonksiyonunu yeniden
+					yazar dependency injeciton yaparak construct'tan bir customerCheckService alır.
+					bu service ile kontrol yaparak babasının save'ini kullanarak kayıt yapar. super.xyz()
+
+
+ENTITIES ==> entities klasöründe nesnel sınıflar bulunur customer, product gibi.
+	Customer 		  =>  Customer sınıfıdır. id isim soyisim getters setters bulunur.

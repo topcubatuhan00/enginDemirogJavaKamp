@@ -8,7 +8,7 @@ import Entities.Customer;
 public class Main {
 	public static void main(String[] args) throws Exception {
 		
-		BaseCustomerManager customerManager = new StarbucksCustomerManager(new CustomerCheckManager());
+		BaseCustomerManager customerManager = new NeroCustomerManager();
 		customerManager.save(new Customer(1, "Batuhan","Topçu", 2002, 1938));
 		
 	}
